@@ -2,15 +2,18 @@ import dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import otpRoutes from './routes/otpRoutes.js';  // Add `.js` extension when using ES modules
+import otpRoutes from './routes/otpRoutes.js'; // Add `.js` extension for ES modules
+
+dotenv.config();
 
 const app = express();
 
-// Enable CORS for all origins
+// Enable CORS with the correct configuration
 app.use(cors({
-  origin: ["http://localhost:5173","https://otp-email-client.vercel.app"], // Replace with your frontend URL
+  origin: ["http://localhost:5173", "https://otp-email-client.vercel.app"], // Replace with your frontend URLs
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true, 
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allow specific headers if needed
+  credentials: true, // Enable credentials for cross-origin
 }));
 
 // Middleware to parse JSON body
