@@ -1,7 +1,9 @@
-require('dotenv').config();
-const Otp = require('../models/Otp');
-const nodemailer = require('nodemailer');
-const crypto = require('crypto');
+import dotenv from 'dotenv';
+import Otp from '../models/Otp.js'; // Update the path if necessary
+import nodemailer from 'nodemailer';
+import crypto from 'crypto';
+
+dotenv.config();
 
 // Nodemailer setup
 const transporter = nodemailer.createTransport({
@@ -13,7 +15,7 @@ const transporter = nodemailer.createTransport({
 });
 
 // Controller function to send OTP
-exports.sendOtp = async (req, res) => {
+export const sendOtp = async (req, res) => {
   const { email } = req.body;
   if (!email) return res.status(400).send({ message: 'Email is required' });
 

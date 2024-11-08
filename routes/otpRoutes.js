@@ -1,8 +1,9 @@
-const express = require('express');
+import express from 'express';
+import { sendOtp } from '../controllers/otpController.js'; // Import the sendOtp function
+
 const router = express.Router();
-const otpController = require('../controllers/otpController');
 
 // Route to send OTP
-router.post('/send-otp', otpController.sendOtp);
+router.post('/send-otp', sendOtp);
 
-module.exports = router;
+export default router; // Use export default to export the router
