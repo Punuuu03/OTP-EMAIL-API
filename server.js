@@ -10,7 +10,7 @@ const app = express();
 
 // Enable CORS with the correct configuration
 app.use(cors({
-  origin: ["http://localhost:5173", "https://otp-email-client.vercel.app"], // Replace with your frontend URLs
+  origin: ["/^http:\/\/localhost:\d+$/", "https://otp-email-client.vercel.app"], // Replace with your frontend URLs
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'], // Allow specific headers if needed
   credentials: true, // Enable credentials for cross-origin
